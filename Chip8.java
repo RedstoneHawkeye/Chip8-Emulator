@@ -54,7 +54,31 @@ public class Chip8 {
             + Integer.toString(finger) + " doesn't go this far :)");
         }
     }
+    private void demandFingerInsideBounds(int fingerVal){
+        if(fingerVal >= 4095){
+            throw new ArrayIndexOutOfBoundsException("Hey dum dum the finger value of " 
+            + Integer.toString(finger) + " doesn't go this far :)");
+        }
+    }
     private void advanceFinger(){
         finger += 2;
+    }
+
+    public int decode(int value){
+        demandHexCorrectAmount(value);
+        return (value / 4096);
+    }
+
+    private void demandHexCorrectAmount(int hexValue){
+        String hexValueString = Integer.toString(hexValue); // Converts hexValue to decimal
+        int backToInt = Integer.parseInt(hexValueString);
+
+        if(backToInt > 65535 || backToInt < 0){ // 65535 is max value of hex (0xFFFF)
+            throw new IllegalArgumentException("Hey stupid your hex value " + 
+                hexValueString + " isn't the right amount (" + backToInt + 
+                " isn't beween 0 and 65535). It has a hex value of 0x" + 
+                Integer.toHexString(backToInt)
+            );
+        }
     }
 }

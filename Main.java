@@ -9,5 +9,7 @@ public class Main{
 
         System.out.println(emulator.fetch());
         System.out.println(emulator.fetch());
+
+        System.out.println(Integer.toString(emulator.decode(0x12345)));
     }
 }
