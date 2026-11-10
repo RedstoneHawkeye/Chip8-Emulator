@@ -1,8 +1,8 @@
 public class Chip8 {
 
     private int[] memory = new int[4096];
+    private int[] registers = new int[16];
     private int finger = 0x200;
-
 
 
 
@@ -48,18 +48,21 @@ public class Chip8 {
         advanceFinger();
         return total;
     }
+
     private void demandFingerInsideBounds(){
         if(finger >= 4095){
             throw new ArrayIndexOutOfBoundsException("Hey dum dum the finger value of " 
             + Integer.toString(finger) + " doesn't go this far :)");
         }
     }
+
     private void demandFingerInsideBounds(int fingerVal){
         if(fingerVal >= 4095){
             throw new ArrayIndexOutOfBoundsException("Hey dum dum the finger value of " 
             + Integer.toString(finger) + " doesn't go this far :)");
         }
     }
+
     private void advanceFinger(){
         finger += 2;
     }
@@ -80,5 +83,24 @@ public class Chip8 {
                 Integer.toHexString(backToInt)
             );
         }
+    }
+
+    private void demandRegisterInsideBounds(int position){
+        if(position > 15 || position < 0){
+            throw new ArrayIndexOutOfBoundsException("Hey bro. " 
+            + Integer.toString(position) + " isn't in the bounds [0, 15] " 
+            + "so it can't go into a register of that amount. Too bad so sad.");
+        }
+    }
+
+    public void setRegisterValue(int position, int value){
+        demandValueInsideBounds(value);
+        demandRegisterInsideBounds(position);
+        registers[position] = value;
+    }
+
+    public int getRegisterValue(int position){
+        demandRegisterInsideBounds(position);
+        return registers[position];
     }
 }
