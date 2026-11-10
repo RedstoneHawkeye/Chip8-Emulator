@@ -108,4 +108,9 @@ public class Chip8 {
         demandHexCorrectAmount(hexValue); // Used to confirm hexValue is within 0xFFFF
         return ((hexValue % 4096) / 256); // Finds second digit of hexValue
     }
+
+    public int getLastTwoHexDigits(int hexValue){
+        demandHexCorrectAmount(hexValue);
+        return (hexValue %256);
+    }
 }
