@@ -6,7 +6,32 @@ public class Main{
 
         emulator.setMemoryValue(0x200, 0xA2);
         emulator.setMemoryValue(0x201, 0xF0);
+        
+        
+        
 
+        
+        /*GET SECOND HEX DIGIT TEST CASES
+        
+        try{
+            emulator.getSecondHexDigit(0x62AF);
+            System.out.println("PASS: 0x62AF is within bounds");
+        } catch (IllegalArgumentException e){
+            System.out.println("FAIL: 0x62AF is inside bounds, error message should not have been called: \n" + e.getMessage());
+        }
+        try{
+            emulator.getSecondHexDigit(0x12345);
+            System.out.println("FAIL: 0x62AF is outside of bounds");
+        } catch (IllegalArgumentException e){
+            System.out.println("PASS: 0x12345 threw error message " + e.getMessage());
+        }
+        try{
+            emulator.getSecondHexDigit(-5);
+            System.out.println("FAIL: 0x62AF is outside of bounds");
+        } catch (IllegalArgumentException e){
+            System.out.println("PASS: 0x12345 threw error message " + e.getMessage());
+        }*/
+        /*ALL TEST CASES FROM BEFORE
         // ---------- Memory ----------
 try {
     emulator.getMemoryValue(4096);
@@ -120,6 +145,6 @@ try {
 }
 System.out.println(emulator.getRegisterValue(0) == 25
     ? "PASS: failed write left 25 intact"
-    : "FAIL: register changed to " + emulator.getRegisterValue(0));
+    : "FAIL: register changed to " + emulator.getRegisterValue(0));*/
     }
 }

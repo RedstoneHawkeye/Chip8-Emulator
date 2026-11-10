@@ -103,4 +103,9 @@ public class Chip8 {
         demandRegisterInsideBounds(position);
         return registers[position];
     }
+
+    public int getSecondHexDigit(int hexValue){ // Second hex digit can represent Register number in commands
+        demandHexCorrectAmount(hexValue); // Used to confirm hexValue is within 0xFFFF
+        return ((hexValue % 4096) / 256); // Finds second digit of hexValue
+    }
 }
